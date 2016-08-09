@@ -1,0 +1,34 @@
+{
+  "name": "word-reminder",
+  "version": "1.0.0",
+  "description": "Remind the word by notification on screen",
+  "main": "src/index.html",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quocphu/word-reminder.git"
+  },
+  "keywords": [
+    "word",
+    "reminder",
+    "vocabulary",
+    "remind"
+  ],
+  "author": "quocphu <quocphu.02@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quocphu/word-reminder/issues"
+  },
+  "homepage": "https://github.com/quocphu/word-reminder",
+
+  "scripts": {
+    "preinstall": "bower install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {    
+    "bower": "^1.7.9",
+    "express": "*"
+  }
+}

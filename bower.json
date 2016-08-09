@@ -1,0 +1,31 @@
+{
+  "name": "word-reminder",
+  "description": "Remind the word by notification on screen",
+  "main": "index.js",
+  "authors": [
+    "quocphu <quocphu.02@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "word",
+    "reminder",
+    "vocabulary",
+    "remind"
+  ],
+  "homepage": "https://github.com/quocphu/word-reminder",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "jquery": "3.1.0",
+    "angular-xeditable": "*",
+    "angular": "~1.5.8",
+    "angular-route": "~1.5.8",
+    "angular-ui-router": "~0.3.1"
+  }
+}

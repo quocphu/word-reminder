@@ -1,0 +1,21 @@
+.book-detail {
+	background-color: #fcc;
+}
+.book-detail ul {
+	list-style: none;
+	display: block;
+	position: relative;
+	padding: 0px;
+}
+
+.book-detail ul li {
+	display: box;
+	float: left;
+	width: 121px;
+	height: 110px;
+	border: 1px red dotted;
+	text-align: center;
+	margin: 5px;
+	overflow:hidden !important;
+	text-overflow: ellipsis;
+}
