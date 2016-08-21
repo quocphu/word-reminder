@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Remind the word by notification on screen",
   "main": "src/index.html",
+  "window": {
+    "toolbar": true
+  },
   "directories": {
     "test": "test"
   },
@@ -30,5 +33,6 @@
   "devDependencies": {    
     "bower": "^1.7.9",
     "express": "*"
-  }
+  },
+  "node-remote": ["*://*.jsfiddle.net/*", "*://*.google.com/*", "*://oauth.io/*"]
 }

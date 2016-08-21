@@ -1,152 +1,151 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="wordReminder">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
 
-    <!-- Bootstrap -->
-    <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="resources/css/default.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/index.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/comments.css">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Word reminder</title>
 
-    <link rel="stylesheet" type="text/css" href="libs/angular-xeditable/dist/css/xeditable.min.css">
+  <!-- Bootstrap -->
+  <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="resources/css/default.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/index.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/comments.css">
 
-    <link rel="stylesheet" type="text/css" href="resources/css/book-detail.css">
+  <link rel="stylesheet" type="text/css" href="libs/angular-xeditable/dist/css/xeditable.min.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="libs/angular/angular.js"></script>
-    <script src="libs/angular-route/angular-route.js"></script>
-    <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="libs/jquery/dist/jquery.min.js"></script>
-    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script> 
-    <script src="libs/angular-xeditable/dist/js/xeditable.min.js"></script> 
-
-    <script src="views/js/default.js"></script>
+  <link rel="stylesheet" type="text/css" href="resources/css/book-detail.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/new-book.css">
 
 
-    
-  </head>
-  <body>
+</head>
 
-   <div class="container-fluid display-table">
-      <div class="row display-table-row">
-        <!-- side menu -->
-        <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top" id="side-menu">
-          <h1 class="hidden-xs hidden-sm">Word reminder</h1>
-          <ul>
-            <li class="link  active">
-              <a href="#dashboard">
-                <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-                <span class="hidden-sm hidden-xs">Dashboard</span>
-              </a>
-            </li>
+<body>
 
-            <li class="link">
-              <a href="#favourite">
-                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                <span class="hidden-sm hidden-xs">Favourite</span>
-                <span class="label label-success pull-right hidden-xs hidden-sm">20</span>
-              </a>
-            </li>
+  <div class="container-fluid display-table">
+    <div class="row display-table-row">
+      <!-- side menu -->
+      <div class="col-md-2 col-sm-1 hidden-xs display-table-cell valign-top" id="side-menu">
+        <h1 class="hidden-xs hidden-sm">Word reminder</h1>
+        <ul>
+          <li class="link  active">
+            <a href="#dashboard">
+              <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+              <span class="hidden-sm hidden-xs">Dashboard</span>
+            </a>
+          </li>
 
-            <li class="link">
-              <a href="#settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                <span class="hidden-sm hidden-xs">Setting</span>
-              </a>
-            </li>
+          <li class="link">
+            <a href="#favourite">
+              <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+              <span class="hidden-sm hidden-xs">Favourite</span>
+              <span class="label label-success pull-right hidden-xs hidden-sm">20</span>
+            </a>
+          </li>
 
-            <li class="link">
-              <a href="#help">
-                <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
-                <span class="hidden-sm hidden-xs">Help</span>
-              </a>
-            </li>
+          <li class="link">
+            <a href="#settings">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              <span class="hidden-sm hidden-xs">Setting</span>
+            </a>
+          </li>
 
-            <li class="link">
-              <a href="#new">
-                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                <span class="hidden-sm hidden-xs">Create new</span>
-              </a>
-            </li>
+          <li class="link">
+            <a href="#help">
+              <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+              <span class="hidden-sm hidden-xs">Help</span>
+            </a>
+          </li>
 
-          </ul>
-        </div>
+          <li class="link">
+            <a href="#new-book">
+              <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+              <span class="hidden-sm hidden-xs">Create new</span>
+            </a>
+          </li>
 
-        <!-- main content area -->
-        <div class="col-md-10 col-sm-11 display-table-cell valign-top">
-          <div class="row">
-            <header id="nav-header" class="clearfix">
-              <div class="col-md-5 col-sm-5">
-                <nav class="navbar-default pull-left">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu">
+        </ul>
+      </div>
+
+      <!-- main content area -->
+      <div class="col-md-10 col-sm-11 display-table-cell valign-top">
+        <div class="row">
+          <header id="nav-header" class="clearfix">
+            <div class="col-md-5 col-sm-5">
+              <nav class="navbar-default pull-left">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                </nav>
-                <input type="text" class="" id="header-search-field" placeholder="Search for something...">
-              </div>
-
-              <div class="col-md-7 col-sm-7">
-                <ul class="pull-right">
-                  <li class="fixed-width">
-                    <a href="#">
-                      <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
-                      <span class="label label-warning">3</span>
-                    </a>
-                  </li>
-
-                  <li class="fixed-width">
-                    <a href="#">
-                      <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                      <span class="label label-message">3</span>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="logout">
-                      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                      log out
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </header>
-          </div>
-
-            <div id="content" ui-view>
-              
+              </nav>
+              <input type="text" class="" id="header-search-field" placeholder="Search for something...">
             </div>
 
-            <div class="row">
-              <footer id="admin-footer" class="clearfix">
-                <div class="pull-left"><b>Copyright </b>&copy; 2015</div>
-                <div class="pull-right">admin system</div>
-              </footer>
+            <div class="col-md-7 col-sm-7">
+              <ul class="pull-right">
+                <li class="fixed-width">
+                  <a href="#">
+                    <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                    <span class="label label-warning">3</span>
+                  </a>
+                </li>
+
+                <li class="fixed-width">
+                  <a href="#">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    <span class="label label-message">3</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="logout">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> log out
+                  </a>
+                </li>
+              </ul>
             </div>
-          </div>
+          </header>
         </div>
-      </div>
+
+        <div id="content" ui-view>
+
+        </div>
+
+        <div class="row">
+          <footer id="admin-footer" class="clearfix">
+            <div class="pull-left"><b>Copyright </b>&copy; 2015</div>
+            <div class="pull-right">admin system</div>
+          </footer>
         </div>
       </div>
     </div>
+  </div>
+  </div>
+  </div>
+  </div>
 
-    
-   <script src="app.js"></script>
-   <script src="init.js"></script>
-   <script src="routes.js"></script>
-   <script src="controllers/login.js"></script>
-   <script src="controllers/lessonDetail.js"></script>
-  </body>
+  <script src="libs/angular/angular.js"></script>
+  <script src="libs/angular-route/angular-route.js"></script>
+  <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="libs/jquery/dist/jquery.min.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="libs/angular-xeditable/dist/js/xeditable.min.js"></script>
+  <script src="libs/md5.js"></script>
+
+  <script src="views/js/default.js"></script>
+
+  <script src="utils/Constants.js"></script>
+  <script src="utils/DBProvider.js"></script>
+
+  <script src="app.js"></script>
+  <script src="init.js"></script>
+  <script src="routes.js"></script>
+  <script src="controllers/login.js"></script>
+  <script src="controllers/lessonDetail.js"></script>
+  <script src="controllers/newBookController.js"></script>
+</body>
+
 </html>
