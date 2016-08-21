@@ -53,6 +53,7 @@
 
   /**
    * Insert book
+   * return book_id
    */
   DbProvider.bookInsert = function (title, description, author, cb) {
     var trans = window.WordReminderDb.transaction(window.CONS.DB_TBL_BOOK, 'readwrite');
@@ -68,11 +69,11 @@
       isShared: false
     });
 
-    requestAdd.onsuccess = function (e) {
+    requestAdd.onerror  = function (e) {
       return cb(e.target.errorCode, null);
     };
 
-    requestAdd.onfailure = function (e) {
+    requestAdd.onsuccess = function (e) {
       return cb(null, e.target.result);
     };
   }
@@ -86,14 +87,14 @@
     var store = trans.objectStore(table);
     var request = store.openCursor();
     request.onerror = function (e) {
-      return cb(e.result.errorCode);
+      return cb(e.target.errorCode);
     }
 
     request.onsuccess = function (e) {
       var cursor = event.target.result;
       if (cursor) {
         if (cursor.value[field].indexOf(keyword) !== -1) {
-          d.push(JSON.stringify(cursor.value))
+          d.push(cursor.value);
         }
         cursor.continue();
       } else {
@@ -103,12 +104,56 @@
   }
 
   /**
+   * Get entry by id
+   */
+  DbProvider.getById = function (table, id, cb){
+    var trans = window.WordReminderDb.transaction(table, 'readwrite');
+    var request = trans.objectStore(table).get(id);
+    request.onerror = function(e){
+      console.error(e);
+      return cb(e.target.errorCode);
+    }
+    request.onsuccess = function(e){
+      var rs = e.target.result;
+      return cb(null, rs);
+    }
+  }
+
+  /**
+   * Delete entry by id
+   */
+  DbProvider.deleteById = function (table, id, cb){
+    var trans = window.WordReminderDb.transaction(table, 'readwrite');
+    var request = trans.objectStore(table).delete(id);
+    request.onerror = function(e){
+      console.error(e);
+      return cb(e.target.errorCode);
+    }
+    
+    request.onsuccess = function(e){
+      return cb(null);
+    }
+  }
+  /**
    * Search book by title
    */
   DbProvider.bookSearch = function(title, cb){
     DbProvider.search(window.CONS.DB_TBL_BOOK, 'title', title, cb);
   }
 
+  /**
+   * Get book by id
+   */
+  DbProvider.bookGetById = function(id, cb){
+    DbProvider.getById(window.CONS.DB_TBL_BOOK, id, cb);
+  }
+
+  /**
+   * Get book by id
+   */
+  DbProvider.bookDeleteById = function(id, cb){
+    DbProvider.deleteById(window.CONS.DB_TBL_BOOK, id, cb);
+  }
 
   window.DbProvider = DbProvider;
 })(window);
