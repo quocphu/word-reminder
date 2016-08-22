@@ -6,9 +6,24 @@ angular.module('wordReminder.controllers').controller('lessonDetail',lessonDetai
 function lessonDetail($scope, $filter, $http) {
     console.log('login controller');
     $scope.users = [
-    {id: 1, name: 'awesome user1', status: 2, group: 4, groupName: 'admin'},
-    {id: 2, name: 'awesome user2', status: undefined, group: 3, groupName: 'vip'},
-    {id: 3, name: 'awesome user3', status: 2, group: null}
+{
+  word: "love",
+  type: "noun",
+  pronunciation: "lʌv",
+  meaning:"Yêu",
+  example: "I love you",
+  audio: "love.mp3",
+  image: "love.jpg"
+},
+{
+  word: "live",
+  type: "verb",
+  pronunciation: "liv",
+  meaning:"Song",
+  example: "I live in London",
+  audio: "live.mp3",
+  image: "live.jpg"
+}
   ]; 
 
   $scope.statuses = [

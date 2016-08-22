@@ -19,7 +19,11 @@ angular.module('wordReminder').config(function( $stateProvider, $routeProvider) 
     })
     .state('new-book',{
       url: '/new-book',
-      templateUrl: 'views/new-book.html'
+      templateUrl: 'views/book-new.html'
+    })
+    .state('new-lesson',{
+      url: '/new-lesson',
+      templateUrl: 'views/lesson-new.html'
     })
   ;
 });
