@@ -3,7 +3,8 @@ var modules = [
   'ngRoute',
   'ui.router',
   'wordReminder.controllers',
-  'xeditable'
+  'xeditable',
+  'ngMaterial'
 ];
 
 var wordReminder = window.wordReminder = angular.module('wordReminder', modules);

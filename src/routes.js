@@ -10,7 +10,7 @@ angular.module('wordReminder').config(function( $stateProvider, $routeProvider) 
       templateUrl: 'views/dashboard.html'
     })
     .state('book-detail',{
-      url: '/book-detail',
+      url: '/book-detail/:id',
       templateUrl: 'views/book-detail.html'
     })
     .state('lesson-detail',{
@@ -22,7 +22,7 @@ angular.module('wordReminder').config(function( $stateProvider, $routeProvider) 
       templateUrl: 'views/book-new.html'
     })
     .state('new-lesson',{
-      url: '/new-lesson',
+      url: '/new-lesson/:id/:title/:lessonId',
       templateUrl: 'views/lesson-new.html'
     })
   ;

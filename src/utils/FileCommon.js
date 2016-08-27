@@ -1,5 +1,5 @@
 FileCommon = function(){};
-
+FileCommon.CAN_NOT_READ_FILE = 'CAN_NOT_READ_FILE';
 /**
  * Read file as text
  */
@@ -43,10 +43,19 @@ FileCommon.readFileAsJson = function(path, cb){
 /**
  * Write file
  */
-FileCommon.writeFile =function(path, data){
-  if(typeof data == 'object'){
+FileCommon.writeFile = function (path, data) {
+  if (typeof data == 'object') {
     data = JSON.stringify(data);
   }
-  
+}
 
+FileCommon.encodeImageFileAsURL = function(file, cb) {
+        var reader  = new FileReader();
+        reader.onloadend = function () {
+            cb(null, reader.result);
+        }
+        reader.onerror() =function(){
+          cb(FileCommon);
+        }
+        reader.readAsDataURL(file);
 }

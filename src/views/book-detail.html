@@ -1,115 +1,46 @@
+<div ng-controller="bookDetailController">
+  <header class="clearfix">
+    <h2 class="page_title pull-left">Books</h2>
+    <button type="button" class="btn btn-xs btn-primary pull-right" ng-click="onNewLesson()">Create new lesson</button>
+  </header>
 
-              <header class="clearfix">
-                <h2 class="page_title pull-left">Books</h2>
-                <button type="button" class="btn btn-xs btn-primary pull-right">Create new lesson</button>
-              </header>
+  <div class="content-inner">
 
-              <div class="content-inner">
+    <div class="row comments-row" ng-repeat="book in books">
+      <div class="col-sm-3 col-md-2">
+        <img class="hidden-xs" src="resources/img/book.jpg">
+      </div>
 
-                <div class="row comments-row">
-                  <div class="col-sm-3 col-md-2">
-                    <img class="hidden-xs" src="https://api.fnkr.net/testimg/70x70/00CED1/FFF/?text=100x100">
-                  </div>
-
-                  <div class="col-sm-9 col-md-10">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-md-12">
-                        <b>kingsley ijomah</b><br>
-                        <small>2:21 pm - 01/16/2015 - Penguin Learner - 60 lessons</small>
-                      </div>
-                    </div>
-                    <div class="well well-sm comments-well">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-                  </div>
-                  <div class="clearfix">
-                    <div class="pull-right">
-                      <a class="btn btn-xs btn-default" href="#" role="button">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        Edit
-                      </a>
-                      <a class="btn btn-xs btn-default" href="#" role="button">
-                        <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
-                        Share
-                      </a>
-                    </div>
-                  </div>
-                  </div>
-                </div>
-                <div class="book-detail clearfix">
-                  <ul>
-                    <li>
-                      <a ui-sref="lesson-detail"><b>lesson1</b> </a><br>
-                      <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                    <li>
-                      <b>lesson1</b> <br>
-                      <small>Shopping and payment</small>
-                    </li>
-                  </ul>
-                </div>
+      <div class="col-sm-9 col-md-10">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <b>{{book.title}}</b><br>
+            <small>{{book.createdAt|date:'medium'}} - Penguin Learner - 60 lessons</small>
+          </div>
+        </div>
+        <div class="well well-sm comments-well">
+          {{book.description}}
+        </div>
+        <div class="clearfix">
+          <div class="pull-right">
+            <a class="btn btn-xs btn-default" href="#" role="button">
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
+            </a>
+            <a class="btn btn-xs btn-default" href="#" role="button">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Share
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="book-detail clearfix">
+      <ul>
+        <li ng-repeat="lesson in lessons" ng-click="onLessonDetail(lesson.id)">
+          <a href=""><b>{{lesson.title}}</b></a><br>
+          <small>{{lesson.description}}</small>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>

@@ -14,6 +14,7 @@
   <link rel="stylesheet" type="text/css" href="resources/css/comments.css">
 
   <link rel="stylesheet" type="text/css" href="libs/angular-xeditable/dist/css/xeditable.min.css">
+  <link rel="stylesheet" type="text/css" href="libs/angular-material/angular-material.min.css">
 
   <link rel="stylesheet" type="text/css" href="resources/css/book-detail.css">
   <link rel="stylesheet" type="text/css" href="resources/css/new-book.css">
@@ -123,26 +124,30 @@
 
         </div>
 
-        <div class="row">
+        <!--<div class="row">
           <footer id="admin-footer" class="clearfix">
             <div class="pull-left"><b>Copyright </b>&copy; 2015</div>
             <div class="pull-right">admin system</div>
           </footer>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
-  </div>
-  </div>
-  </div>
+
 
   <script src="libs/angular/angular.js"></script>
+  <script src="libs/angular-animate/angular-animate.min.js"></script>
+  <script src="libs/angular-aria/angular-aria.min.js"></script>
+  <script src="libs/angular-messages/angular-messages.min.js"></script>
+  <script src="libs/angular-material/angular-material.min.js"></script>
   <script src="libs/angular-route/angular-route.js"></script>
   <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="libs/jquery/dist/jquery.min.js"></script>
   <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="libs/angular-xeditable/dist/js/xeditable.min.js"></script>
   <script src="libs/md5.js"></script>
+  <script src="libs/async/dist/async.min.js"></script>
+
 
   <script src="views/js/default.js"></script>
 
@@ -153,8 +158,10 @@
   <script src="init.js"></script>
   <script src="routes.js"></script>
   <script src="controllers/login.js"></script>
+  <script src="controllers/bookController.js"></script>
+  <script src="controllers/bookNewController.js"></script>
+  <script src="controllers/bookDetailController.js"></script>
   <script src="controllers/lessonDetail.js"></script>
-  <script src="controllers/newBookController.js"></script>
   <script src="controllers/lessonNewController.js"></script>
 </body>
 
