@@ -1,10 +1,10 @@
 chrome.app.runtime.onLaunched.addListener(function(launchData) {
   chrome.app.window.create('src/index.html', {
-    id: "WordReminder",
+    id: "main",
     innerBounds: {
       width: 800,
       height: 600,
-      minWidth: 500,
+      minWidth: 800,
       minHeight: 600
     }
   });

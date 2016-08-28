@@ -25,5 +25,9 @@ angular.module('wordReminder').config(function( $stateProvider, $routeProvider) 
       url: '/new-lesson/:id/:title/:lessonId',
       templateUrl: 'views/lesson-new.html'
     })
+    .state('settings',{
+      url: '/settings',
+      templateUrl: 'views/settings.html'
+    })
   ;
 });

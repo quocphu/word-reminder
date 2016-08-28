@@ -42,11 +42,23 @@ function lessonNewController($scope, $filter, $http, $stateParams, $state) {
   };
 
   // Remove word
-  $scope.deleteWord = function (word) {
-    var filtered = $filter('filter')($scope.words, { word: word });
-    if (filtered.length) {
-      filtered[0].isDeleted = true;
+  $scope.deleteWord = function (word, type, idx) {
+    var filtered;
+    // New word does not have id field
+    if(word == '') {
+      for(var i = 0; i < $scope.words.length; i++) {
+        if($scope.words[i].id == undefined  && $scope.words[i].idx == idx) {
+          $scope.words.splice(i, 1);
+          break;
+        }
+      }
+    } else {
+      filtered = $filter('filter')($scope.words, { word: word });
+      if (filtered.length) {
+        filtered[0].isDeleted = true;
+      }
     }
+
   };
 
   // Add word
@@ -248,7 +260,6 @@ function lessonNewController($scope, $filter, $http, $stateParams, $state) {
   }
 
   $scope.onBack = function(){
-
     if($scope.lessonId >= 0) {
       // Back to book detail page
       $state.go('book-detail',({id: parseInt($scope.bookId)}));
@@ -267,5 +278,31 @@ function lessonNewController($scope, $filter, $http, $stateParams, $state) {
     return '';
   }
 
+  $scope.onLearn = function () {
+    var options = {
+      id: 'play',
+      innerBounds: {
+        width: 400,
+        height: 235,
+      },
+      left: screen.width - 400 - 200,
+      top: screen.height / 2 - 200 / 2,
+      type: 'panel',
+      frame: 'none',
+      resizable: false,
+      alwaysOnTop: true
+    };
+    var popupData =  {info: $scope.lesson, words: $scope.words };
+    chrome.storage.sync.set({ 'lesson': popupData}, function () {
+      var flip = chrome.app.window.create('src/popup/flipcard.html', options, function(){
+        chrome.app.window.current().hide();
+        chrome.app.window.get('play').onClosed.addListener(function(){
+          console.log('closed');
+          chrome.app.window.current().show();
+        })
+      });
+      
+    });
+  } 
   init();
 }

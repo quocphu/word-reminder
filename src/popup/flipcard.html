@@ -1,0 +1,194 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        /* entire container, keeps perspective */
+        
+        body {
+            margin: 5px;
+        }
+        
+        .flip-container {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        /*  UPDATED! flip the pane when hovered */
+        
+        .go .back {
+            transform: rotateY(0deg);
+        }
+        
+        .go .front {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-container,
+        .front,
+        .back {
+            width: 400px;
+            height: 220px;
+        }
+        /* flip speed goes here */
+        
+        .flipper {
+            transition: 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        /* hide back of pane during swap */
+        
+        .front,
+        .back {
+            backface-visibility: hidden;
+            transition: 0.6s;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*background: blue;*/
+        }
+        /*  UPDATED! front pane, placed above back */
+        
+        .front {
+            z-index: 2;
+            transform: rotateY(0deg);
+        }
+        
+        .front p {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+        }
+        
+        .front p b {
+            font-size: 48px;
+        }
+        
+        .font p i {
+            font-size: 11px;
+        }
+        /* back, initially hidden pane */
+        
+        .back {
+            transform: rotateY(-180deg);
+        }
+        
+        .back .sound {
+            height: 15px;
+            margin-left: 2px;
+        }
+        
+        .popup {
+            /*background-color: red;*/
+            height: 200px;
+            width: 400px;
+        }
+        
+        .popup .control {
+            opacity: 0;
+            z-index: 1000;
+        }
+        
+        .popup:hover .control {
+            opacity: 0.7;
+        }
+        
+        .popup:hover #close {
+            opacity: 0.7;
+        }
+        
+        .popup .control {
+            /*background-color: pink;*/
+            position: absolute;
+            width: 390px;
+            height: 20px;
+            bottom: 5px;
+        }
+        
+        .control .btn {
+            float: left;
+            width: 33%;
+            margin-left: 1px;
+            height: 20px;
+            font-size: 12px;
+            line-height: 10px;
+            padding: initial;
+        }
+        
+        #nav span {
+            /*position: relative;*/
+            /*width: 20px;*/
+            height: 20px;
+           
+            text-align: center;
+            opacity: 1;
+            /*background: red;*/
+            cursor: pointer;
+            -webkit-app-region: no-drag;
+            margin-left: 3px;
+        }
+        
+        #nav {
+            width: 100%;
+            height: 20px;
+            cursor: move;
+            position: relative;
+            /*background: red;*/
+            -webkit-app-region: drag;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+    <script src="../libs/jquery/dist/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div id="nav">
+        <div class="pull-right">
+            <span id="btnOnTop" class="glyphicon glyphicon-object-align-top" aria-hidden="true" title="Always on top"></span>
+            <span id="btnSetting" class="glyphicon glyphicon-cog" aria-hidden="true" title="Hide"></span>
+            <span id="btnHide" class="glyphicon glyphicon-minus" aria-hidden="true" title="Setting"></span>
+        </div>
+
+    </div>
+    <div class="popup">
+
+
+        <div class="flip-container">
+            <div class="flipper" id="flipper">
+                <div class="front">
+                    <p>
+                        <b id="front-word">potential</b><br>
+                        <i id="front-type"></i>
+                    </p>
+                </div>
+                <div class="back">
+                    <p>
+                        <b><a id="back-word"target="_blank" href="http://vndic.net/index.php?word=potential&dict=en_vi">potential</a></b>
+                        <span id="back-pronunciation">/pəˈtenʃl/</span><img class="sound" src="sound.png" /><br>
+                        <b id="back-mean">khả năng; tiềm lực</b><br>
+                        <i id="back-example">The normal conduction of action potentials is reliant upon sodium channelsThe normal conduction of action potentials is reliant upon sodium channels The normal conduction of action potentials is reliant upon sodium channels</i>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="control">
+            <button id="prev" class="btn">prev</button>
+            <button id="flip" class="btn">flip</button>
+            <button id="next" class="btn">next</button>
+        </div>
+    </div>
+
+    <script src="flip.js"></script>
+</body>
+
+
+</html>

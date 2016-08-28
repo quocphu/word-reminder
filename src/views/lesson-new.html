@@ -1,7 +1,7 @@
-<div  ng-controller="lessonNewController">
+<div ng-controller="lessonNewController">
   <header class="clearfix">
     <h2 class="page_title pull-left">Create lesson for: {{bookTitle}}</h2>
-     <button type="button" class="btn btn-xs btn-primary pull-right" ng-click="onBack()">Back</button> 
+    <button type="button" class="btn btn-xs btn-primary pull-right" ng-click="onBack()">Back</button>
   </header>
 
   <div class="content-inner">
@@ -13,6 +13,24 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
             <input type="text" placeholder="Title" ng-model="title" /><br>
             <textarea row="5" placeholder="Description" ng-model="description"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <a class="btn btn-xs btn-default" href="#" role="button">
+              <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+
+            </a>
+            <a class="btn btn-xs btn-default" href="#" role="button" ng-click="onLearn()">
+              <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Learn
+            </a>
+            <a class="btn btn-xs btn-default" href="#" role="button">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Share
+            </a>
+
+            <a class="btn btn-xs btn-default" href="" role="button" ng-click="onDelete(book.id)">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Delete
+            </a>
           </div>
         </div>
       </div>
@@ -70,7 +88,7 @@
                   {{ book.image || 'empty' }}
                 </span>
               </td>-->
-              <td><button type="button" ng-show="tableform.$visible" ng-click="deleteWord(word.word, word.type)" class="btn btn-danger pull-right">Del</button></td>
+              <td><button type="button" ng-show="tableform.$visible" ng-click="deleteWord(word.word, word.type, word.idx)" class="btn btn-danger pull-right">Del</button></td>
             </tr>
           </table>
 
